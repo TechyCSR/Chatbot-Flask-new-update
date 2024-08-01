@@ -4,12 +4,6 @@ import os
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage
 
-os.environ["AZURE_OPENAI_API_KEY"] = "<API_KEY>"
-os.environ["AZURE_OPENAI_ENDPOINT"] = "<OPENAI_ENDPOINT>"
-os.environ["AZURE_OPENAI_API_VERSION"] = "<OPENAI_API_VERSION>"
-os.environ["AZURE_OPENAI_CHAT_DEPLOYMENT_NAME"] = "<OPENAI_DEPLOYMENT_NAME>"
-os.environ["AZURE_OPENAI_USER_ID"] = "<OPENAI_USER_ID>"
-
 # import torch
 # tokenizer = AutoTokenizer.from_pretrained("microsoft/DialoGPT-medium")
 # model = AutoModelForCausalLM.from_pretrained("microsoft/DialoGPT-medium")
@@ -28,6 +22,14 @@ def chat():
 
 def get_chat_response(text):
     load_dotenv()
+    
+    # Setup of environment variables
+    os.environ["AZURE_OPENAI_API_KEY"] = "<API_KEY>"
+    os.environ["AZURE_OPENAI_ENDPOINT"] = "<OPENAI_ENDPOINT>"
+    os.environ["AZURE_OPENAI_API_VERSION"] = "<OPENAI_API_VERSION>"
+    os.environ["AZURE_OPENAI_CHAT_DEPLOYMENT_NAME"] = "<OPENAI_DEPLOYMENT_NAME>"
+    os.environ["AZURE_OPENAI_USER_ID"] = "<OPENAI_USER_ID>"
+
     llm = AzureChatOpenAI(
         default_headers={
             "User-Id": os.getenv('AZURE_OPENAI_USER_ID')

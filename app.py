@@ -30,6 +30,7 @@ def get_chat_response(text):
     os.environ["AZURE_OPENAI_CHAT_DEPLOYMENT_NAME"] = "<OPENAI_DEPLOYMENT_NAME>"
     os.environ["AZURE_OPENAI_USER_ID"] = "<OPENAI_USER_ID>"
 
+    # Configuring LLM model
     llm = AzureChatOpenAI(
         default_headers={
             "User-Id": os.getenv('AZURE_OPENAI_USER_ID')

@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request, jsonify
-from langchain_openai import AzureChatOpenAI
 import os
 from dotenv import load_dotenv
-from langchain_core.messages import HumanMessage
 from g4f.client import Client
 
 chats = [
